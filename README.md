@@ -7,10 +7,11 @@ Simple tool to convert notes taken in a Coursera's course to CSV or JSON formats
 1. Open the Coursera course, go to the ''Notes'' section and save the page as a complete HTML using any browser.
 2. Run:
 
-- `./courseranotesconverter -i input.html -o output.json`
+ `./courseranotesconverter -i input.html -o output.json`
 
 ## More options
 
+```text
  usage: courseranotesconverter [-h] --input INPUT --output OUTPUT [--tags TAGS]
                                [--reference REFERENCE] [--force_all_notes]
                                [--no_location_brackets] [--format FORMAT]
@@ -29,7 +30,7 @@ Simple tool to convert notes taken in a Coursera's course to CSV or JSON formats
    --no_location_brackets
                          Remove brackets in 'location' field (default: False)
    --format FORMAT       Output format (json or csv) (default: json)
-
+```
 
 
 
