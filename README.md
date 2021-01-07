@@ -34,22 +34,31 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 ## JSON format
 
 ```json
-[ {
-"title": "<Course topic>: <Lesson name> <Note location>",
+[
+{
+"title": "<Course topic>: <Lesson name> <Note 1 location>",
 "tags" : "<--tags option value>",
-"text" : "<Note>",
+"text" : "<Note 1>",
 "original-text" : "<Highlighted text from the lesson>",
 "reference" : "<--reference option value>",
-"location" : "[[<Course topic>: <Lesson name> <Note location>]]"
+"location" : "[[<Course topic>: <Lesson name> <Note 1 location>]]"
 },
 {
-"title": "<Course topic>: <Lesson name> <Note location>",
-
-...
-
+"title": "<Course topic>: <Lesson name> <Note 2 location>",
+"tags" : "<--tags option value>",
+"text" : "<Note 2>",
+"original-text" : "<Highlighted text from the lesson>",
+"reference" : "<--reference option value>",
+"location" : "[[<Course topic>: <Lesson name> <Note 2 location>]]"
+},
+{
+"title": "<Course topic>: <Lesson name> <Note 3 location>",
+"tags" : "<--tags option value>",
+"text" : "<Note 3>",
+"original-text" : "<Highlighted text from the lesson>",
+"reference" : "<--reference option value>",
+"location" : "[[<Course topic>: <Lesson name> <Note 3 location>]]"
 }
-
-...
 ]
 ```
 
