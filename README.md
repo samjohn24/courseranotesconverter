@@ -2,13 +2,13 @@
 
 Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 
-## Usage
+## Getting started
 
 1. Open the Coursera course, go to the ''Notes'' section and save the page as a complete HTML using any browser.
 2. Select a section from the selection box . By default is not allowed to convert all notes (`All notes` option).
 3. Run: `./courseranotesconverter -i input.html -o output.json`
 
-## More options
+## Usage
 
 ```text
  usage: courseranotesconverter [-h] --input INPUT --output OUTPUT [--tags TAGS]
@@ -31,5 +31,29 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
    --format FORMAT       Output format (json or csv) (default: json)
 ```
 
+## JSON format
 
+```json
+[ {
+"title": "<Course topic>: <Lesson name> <Note location>",
+"tags" : "<--tags option value>",
+"text" : "<Note>",
+"original-text" : "<Highlighted text from the lesson>",
+"reference" : "<--reference option value>",
+"location" : "[[<Course topic>: <Lesson name> <Note location>]]"
+},
+{
+"title": "<Course topic>: <Lesson name> <Note location>",
 
+...
+
+}
+
+...
+]
+```
+
+## Using to import Coursera notes into TiddlyWiki5
+
+1. Generate a JSON file following the "Getting Started" steps. Optionally add `--tags` option to add tags to the tiddlers.
+2. Import the generated JSON using TiddlyWiki importer.
