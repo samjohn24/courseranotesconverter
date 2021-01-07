@@ -1,0 +1,88 @@
+#!/bin/python3
+import json, csv, argparse
+from bs4 import BeautifulSoup
+
+# Initiate the parser
+parser = argparse.ArgumentParser(formatter_class=\
+        argparse.ArgumentDefaultsHelpFormatter)
+
+# Add long and short argument
+parser.add_argument("--input", "-i", 
+        help="Input file (.html)", required=True)
+parser.add_argument("--output", "-o", 
+        help="Output file (.json)", required=True)
+parser.add_argument("--tags", "-t", 
+        help="String to be added to the field 'tags'")
+parser.add_argument("--reference", "-r", 
+        help="String to be added to the field 'reference'")
+parser.add_argument("--force_all_notes", 
+        help="Force 'All notes' conversion", action="store_true")
+parser.add_argument("--no_location_brackets", 
+        help="Remove brackets in 'location' field", action="store_true")
+parser.add_argument("--format", default="json", \
+        help="Output format (json or csv)")
+
+# Read arguments from the command line
+args = parser.parse_args()
+
+input_file = args.input
+output_file = args.output
+tags = args.tags
+reference = args.reference
+
+# Read the input file with BeatifulSoup
+with open(input_file) as fp:
+    soup = BeautifulSoup(fp, 'html.parser')
+
+# CSS selectors for Coursera
+topic_text_selector="div.content-switcher-title"
+original_text_selector="div.video-section-text"
+note_text_selector="div.video-note-text-box.video-note-text"
+video_ref_selector="div._v8ca7hp.video-info-box"
+
+# Getting data from input
+topic_text = soup.select(topic_text_selector)[0].get_text()
+video_ref = soup.select(video_ref_selector)
+note_text = soup.select(note_text_selector)
+original_text = soup.select(original_text_selector)
+
+# Filling a dictionary
+data = []
+
+if not args.force_all_notes:
+    if topic_text == "All notes":
+        raise Exception("It is not allowed to convert all notes at once.")
+    else:
+        topic_text += ": "
+else:
+    topic_text = ""
+
+for i in range(len(video_ref)):
+    row = {}
+    row['title'] = topic_text + video_ref[i].contents[0].get_text() + " " + \
+            video_ref[i].contents[1].get_text()
+    if args.no_location_brackets:
+        row['location'] = row['title']
+    else:
+        row['location'] = "[["+row['title']+"]]"
+    if args.tags:
+        row['tags'] =  tags
+    row['href'] = video_ref[i].contents[0].get('href')
+    row['text'] = note_text[i].get_text()
+    if args.reference:
+        row['reference'] = reference
+    row['original-text'] = original_text[i].get_text()
+    data.append(row)
+
+# Writing to JSON
+if args.format=="json":
+    with open(output_file, "w") as outfile:
+        json.dump(data, outfile)
+
+# Writing to CSV
+if args.format=="csv":
+    keys = data[0].keys()
+    with open(output_file, 'w', newline='')  as outfile:
+        dict_writer = csv.DictWriter(outfile, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(data)
