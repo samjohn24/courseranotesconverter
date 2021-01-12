@@ -40,10 +40,10 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 "text" : "<Note 1>",
 "original-text" : "<Highlighted text from the lesson>",
 "reference" : "<--reference option value>",
-"location-topic" : "<Course topic>"
-"location-lesson" : "<Lesson name>"
-"location-mark" : "<Note 1 location mark>"
-"location-full" : "<Course topic>: <Lesson name> <Note 1 location mark>"
+"location-topic" : "<Course topic>",
+"location-lesson" : "<Lesson name>",
+"location-mark" : "<Note 1 location mark>",
+"location-full" : "<Course topic>: <Lesson name> <Note 1 location mark>",
 "location" : "[[<Course topic>: <Lesson name> <Note 1 location mark>]]"
 },
 {
@@ -52,10 +52,10 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 "text" : "<Note 2>",
 "original-text" : "<Highlighted text from the lesson>",
 "reference" : "<--reference option value>",
-"location-topic" : "<Course topic>"
-"location-lesson" : "<Lesson name>"
-"location-mark" : "<Note 2 location mark>"
-"location-full" : "<Course topic>: <Lesson name> <Note 2 location mark>"
+"location-topic" : "<Course topic>",
+"location-lesson" : "<Lesson name>",
+"location-mark" : "<Note 2 location mark>",
+"location-full" : "<Course topic>: <Lesson name> <Note 2 location mark>",
 "location" : "[[<Course topic>: <Lesson name> <Note 2 location mark>]]"
 },
 {
@@ -64,10 +64,10 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 "text" : "<Note 3>",
 "original-text" : "<Highlighted text from the lesson>",
 "reference" : "<--reference option value>",
-"location-topic" : "<Course topic>"
-"location-lesson" : "<Lesson name>"
-"location-mark" : "<Note 3 location mark>"
-"location-full" : "<Course topic>: <Lesson name> <Note 3 location mark>"
+"location-topic" : "<Course topic>",
+"location-lesson" : "<Lesson name>",
+"location-mark" : "<Note 3 location mark>",
+"location-full" : "<Course topic>: <Lesson name> <Note 3 location mark>",
 "location" : "[[<Course topic>: <Lesson name> <Note 3 location mark>]]"
 }
 ]
