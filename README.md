@@ -13,7 +13,7 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 ```text
  usage: courseranotesconverter [-h] --input INPUT --output OUTPUT [--tags TAGS]
                                [--reference REFERENCE] [--force_all_notes]
-                               [--no_location_brackets] [--format FORMAT]
+                               [--no_location_field] [--format FORMAT]
  
  optional arguments:
    -h, --help            show this help message and exit
@@ -26,8 +26,7 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
                          String to be added to the field 'reference' (default:
                          None)
    --force_all_notes     Force 'All notes' conversion (default: False)
-   --no_location_brackets
-                         Remove brackets in 'location' field (default: False)
+   --no_location_field   Exclude 'location' field (default: False)
    --format FORMAT       Output format (json or csv) (default: json)
 ```
 
@@ -41,7 +40,11 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 "text" : "<Note 1>",
 "original-text" : "<Highlighted text from the lesson>",
 "reference" : "<--reference option value>",
-"location" : "[[<Course topic>: <Lesson name> <Note 1 location>]]"
+"location-topic" : "<Course topic>"
+"location-lesson" : "<Lesson name>"
+"location-mark" : "<Note 1 location mark>"
+"location-full" : "<Course topic>: <Lesson name> <Note 1 location mark>"
+"location" : "[[<Course topic>: <Lesson name> <Note 1 location mark>]]"
 },
 {
 "title": "<Course topic>: <Lesson name> <Note 2 location>",
@@ -49,7 +52,11 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 "text" : "<Note 2>",
 "original-text" : "<Highlighted text from the lesson>",
 "reference" : "<--reference option value>",
-"location" : "[[<Course topic>: <Lesson name> <Note 2 location>]]"
+"location-topic" : "<Course topic>"
+"location-lesson" : "<Lesson name>"
+"location-mark" : "<Note 2 location mark>"
+"location-full" : "<Course topic>: <Lesson name> <Note 2 location mark>"
+"location" : "[[<Course topic>: <Lesson name> <Note 2 location mark>]]"
 },
 {
 "title": "<Course topic>: <Lesson name> <Note 3 location>",
@@ -57,7 +64,11 @@ Simple tool to convert notes taken in a Coursera course to CSV or JSON formats.
 "text" : "<Note 3>",
 "original-text" : "<Highlighted text from the lesson>",
 "reference" : "<--reference option value>",
-"location" : "[[<Course topic>: <Lesson name> <Note 3 location>]]"
+"location-topic" : "<Course topic>"
+"location-lesson" : "<Lesson name>"
+"location-mark" : "<Note 3 location mark>"
+"location-full" : "<Course topic>: <Lesson name> <Note 3 location mark>"
+"location" : "[[<Course topic>: <Lesson name> <Note 3 location mark>]]"
 }
 ]
 ```

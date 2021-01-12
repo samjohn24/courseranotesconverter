@@ -17,8 +17,8 @@ parser.add_argument("--reference", "-r",
         help="String to be added to the field 'reference'")
 parser.add_argument("--force_all_notes", 
         help="Force 'All notes' conversion", action="store_true")
-parser.add_argument("--no_location_brackets", 
-        help="Remove brackets in 'location' field", action="store_true")
+parser.add_argument("--no_location_field", 
+        help="Exclude 'location' field", action="store_true")
 parser.add_argument("--format", default="json", \
         help="Output format (json or csv)")
 
@@ -53,18 +53,21 @@ if not args.force_all_notes:
     if topic_text == "All notes":
         raise Exception("It is not allowed to convert all notes at once.")
     else:
-        topic_text += ": "
+        topic_text_format = topic_text + ": "
 else:
     topic_text = ""
+    topic_text_format = ""
 
 for i in range(len(video_ref)):
     row = {}
-    row['title'] = topic_text + video_ref[i].contents[0].get_text() + " " + \
-            video_ref[i].contents[1].get_text()
-    if args.no_location_brackets:
-        row['location'] = row['title']
-    else:
-        row['location'] = "[["+row['title']+"]]"
+    row['location-topic'] = topic_text;
+    row['location-lesson'] = video_ref[i].contents[0].get_text();
+    row['location-mark'] = video_ref[i].contents[1].get_text();
+    row['location-full'] = topic_text_format + row['location-lesson'] +" "+ \
+            row['location-mark']
+    row['title'] = row['location-full']
+    if not args.no_location_field:
+        row['location'] = "[["+row['location-full']+"]]"
     if args.tags:
         row['tags'] =  tags
     row['href'] = video_ref[i].contents[0].get('href')
